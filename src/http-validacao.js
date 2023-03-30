@@ -14,10 +14,17 @@ async function checaStatus (listURLs) {
 }
 
 
+
 async function listaValidada (listaDeLinks) {
    const links = extraiLinks(listaDeLinks)
    const status = await checaStatus(links)
-   return status
+
+
+
+   return listaDeLinks.map((obj, indice) => ({
+        ...obj,
+        status: status[indice]
+   }))
 }
 
 export default listaValidada
